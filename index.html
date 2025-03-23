@@ -1,18 +1,90 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>l4br13.github.io</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" href="style.css">
-		<script src="script.js"></script>
-	</head>
-	<body>
-		<div id="console">
-			<div id="console-output"></div>
-			<div id="console-input">
-				<div class="console-input-prompt">$&nbsp;</div>
-				<div class="console-input-command" contenteditable="true" autofocus></div>
-			</div>
+
+<head>
+	<title>l4br13.github.io</title>
+	<meta name="theme-color" content="#000000">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="style.css">
+	<style>
+		body {
+			background-color: black;
+			color: white;
+			margin: 0;
+			padding: 0;
+			font-family: monospace;
+		}
+
+		#console {
+			display: block;
+			font-size: 16px;
+			margin: 25% 0;
+		}
+
+		@media screen and (min-width: 480px) {
+			#console {
+				display: block;
+				margin: 15% 15%;
+			}
+		}
+
+		#console-output {
+			display: block;
+			word-wrap: break-word;
+
+		}
+
+		#console-input {
+			display: flex;
+			word-wrap: break-word;
+		}
+
+		#console-input-prompt {
+			display: flex;
+			word-wrap: break-word;
+		}
+
+		#console-input-command {
+			display: block;
+			background-color: black;
+			color: white;
+			border: none;
+			outline: none;
+			word-wrap: break-word;
+			width: 90%;
+			min-height: auto;
+		}
+	</style>
+	<script>
+		window.onload = function () {
+			var console_output = document.getElementById("console-output");
+			var console_input_command = document.getElementById("console-input-command");
+			console_input_command.focus();
+			document.getElementById("console-input").addEventListener("click", function () {
+				console_input_command.focus();
+			});
+			document.addEventListener("keydown", function (event) {
+				if (event.key === "Enter") {
+					event.preventDefault();
+					var command = console_input_command.textContent.trim();
+					var prompt = document.getElementById("console-input-prompt").innerHTML;
+					console_input_command.textContent = "";
+					console_output.innerHTML += prompt + command + "<br>";
+					window.scrollTo(0, document.body.scrollHeight);
+				}
+			});
+		};
+	</script>
+</head>
+
+<body>
+	<div id="console">
+		<div id="console-output"></div>
+		<div id="console-input">
+			<div id="console-input-prompt">$&nbsp;</div>
+			<div id="console-input-command" contenteditable="plaintext-only" autofocus></div>
 		</div>
-	</body>
+	</div>
+</body>
+
 </html>
