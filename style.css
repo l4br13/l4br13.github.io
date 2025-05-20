@@ -1,0 +1,47 @@
+body {
+	background-color: black;
+	color: white;
+	margin: 0;
+	padding: 0;
+	font-family: monospace;
+}
+
+#console {
+	display: block;
+	font-size: 16px;
+	margin: 25% 0;
+}
+
+@media screen and (min-width: 480px) {
+	#console {
+		display: block;
+		margin: 15% 15%;
+	}
+}
+
+#console-output {
+	display: block;
+	word-wrap: break-word;
+
+}
+
+#console-input {
+	display: flex;
+	word-wrap: break-word;
+}
+
+#console-input-prompt {
+	display: flex;
+	word-wrap: break-word;
+}
+
+#console-input-command {
+	display: block;
+	background-color: black;
+	color: white;
+	border: none;
+	outline: none;
+	word-wrap: break-word;
+	width: 90%;
+	min-height: auto;
+}
